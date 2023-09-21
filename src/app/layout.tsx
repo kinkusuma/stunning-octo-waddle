@@ -1,10 +1,12 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
-import NavBar from "@/components/NavBar";
+import Nav from "@/components/Nav";
+import ReactQueryProviders from "@/components/ReactQueryProviders";
+import Footer from "@/components/Footer";
 
 const roboto = Roboto({
-  weight: ["400", "500", "700"],
+  weight: ["400", "500", "700", "900"],
   style: ["normal", "italic"],
   subsets: ["latin"],
 });
@@ -21,14 +23,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body className={roboto.className}>
-        <NavBar />
-        <main className='px-10 pt-5'>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum
-          perferendis aliquid, dignissimos adipisci quam animi vel quo pariatur
-          et libero enim similique tempora soluta, dolore eos unde corrupti
-          veniam officiis.{children}
-        </main>
+      <body className='px-5 md:px-10' style={roboto.style}>
+        <ReactQueryProviders>
+          <Nav />
+          {children}
+          <Footer />
+        </ReactQueryProviders>
       </body>
     </html>
   );
